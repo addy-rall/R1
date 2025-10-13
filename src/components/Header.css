@@ -1,0 +1,105 @@
+/* src/components/Header.css */
+.header {
+  /* Aligned CSS for better layout control */
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between; /* Spreads content: logo left, links center, buttons right */
+  align-items: center;
+  z-index: 10; 
+  
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  /* Increased font size for better presence */
+  font-size: 1.8em; 
+  font-weight: bold;
+}
+
+.profile-icon {
+    /* Increased size of the image logo */
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.nav-links {
+    /* Ensures the links are horizontally centered if space allows */
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Allows nav to take up available space */
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  margin: 0 25px; /* Adjust spacing between links */
+  opacity: 0.9;
+  font-size: 1.1em;
+}
+
+.auth-buttons a, .auth-buttons button {
+  text-decoration: none;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.login-btn {
+  color: black;
+  background: transparent;
+}
+
+.signup-btn {
+  background-color: #ff6f00; 
+  color: white;
+}
+/* src/components/Header.css */
+
+/* ... (Existing .header styles remain the same) ... */
+
+.logo {
+  display: flex;
+  align-items: center;
+  /* Remove font-size here as it's now handled by children */
+  font-weight: bold;
+}
+
+.logo-icon-asset { 
+    width: 30px; 
+    height: 30px;
+    border-radius: 50%; 
+    margin-right: 10px;
+}
+
+/* NEW: Styles for the stacked text container */
+.logo-text-stack {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    line-height: 1; /* Tightens the spacing between the lines */
+}
+
+.logo-text {
+    /* Main Heading */
+    font-size: 1.2em; /* Adjusted size for the main title */
+    color: #ff6f00; /* Ensure it's white against the dark background */
+}
+
+/* NEW: Style for the Hindi Tagline */
+.logo-tagline {
+    /* Use the orange color from the logo/buttons */
+    color: #ff6f00; 
+    font-size: 0.8em; /* Smaller size beneath the main title */
+    font-weight: normal; /* Often taglines are lighter weight */
+    margin-top: 2px; /* Small gap from the main text */
+}
+
