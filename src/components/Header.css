@@ -1,105 +1,125 @@
 /* src/components/Header.css */
+
 .header {
-  /* Aligned CSS for better layout control */
   position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   padding: 15px 50px;
   display: flex;
-  justify-content: space-between; /* Spreads content: logo left, links center, buttons right */
+  justify-content: space-between;
   align-items: center;
   z-index: 10; 
-  
+  box-sizing: border-box; /* Ensures padding is included in the width */
+  border-bottom: 1px solid #eee; /* Optional: adds a subtle separator line */
 }
 
+/* --- Logo Section --- */
 .logo {
   display: flex;
   align-items: center;
-  /* Increased font size for better presence */
-  font-size: 1.8em; 
-  font-weight: bold;
-}
-
-.profile-icon {
-    /* Increased size of the image logo */
-    width: 40px; 
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 12px;
-}
-
-.nav-links {
-    /* Ensures the links are horizontally centered if space allows */
-    display: flex;
-    justify-content: center;
-    flex-grow: 1; /* Allows nav to take up available space */
-}
-
-.nav-links a {
-  color: black;
-  text-decoration: none;
-  margin: 0 25px; /* Adjust spacing between links */
-  opacity: 0.9;
-  font-size: 1.1em;
-}
-
-.auth-buttons a, .auth-buttons button {
-  text-decoration: none;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px;
-  font-weight: bold;
-}
-
-.login-btn {
-  color: black;
-  background: transparent;
-}
-
-.signup-btn {
-  background-color: #ff6f00; 
-  color: white;
-}
-/* src/components/Header.css */
-
-/* ... (Existing .header styles remain the same) ... */
-
-.logo {
-  display: flex;
-  align-items: center;
-  /* Remove font-size here as it's now handled by children */
   font-weight: bold;
 }
 
 .logo-icon-asset { 
-    width: 30px; 
-    height: 30px;
-    border-radius: 50%; 
+    width: 40px; 
+    height: 40px;
     margin-right: 10px;
 }
 
-/* NEW: Styles for the stacked text container */
 .logo-text-stack {
     display: flex;
-    flex-direction: column; /* Stacks children vertically */
-    line-height: 1; /* Tightens the spacing between the lines */
+    flex-direction: column;
+    line-height: 1.1; 
 }
 
 .logo-text {
-    /* Main Heading */
-    font-size: 1.2em; /* Adjusted size for the main title */
-    color: #ff6f00; /* Ensure it's white against the dark background */
+    font-size: 1.5em;
+    color: #ff6f00;
 }
 
-/* NEW: Style for the Hindi Tagline */
 .logo-tagline {
-    /* Use the orange color from the logo/buttons */
     color: #ff6f00; 
-    font-size: 0.8em; /* Smaller size beneath the main title */
-    font-weight: normal; /* Often taglines are lighter weight */
-    margin-top: 2px; /* Small gap from the main text */
+    font-size: 0.8em;
+    font-weight: normal;
 }
 
+/* --- Navigation Links --- */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Allows nav to occupy the available space in the middle */
+}
+
+.nav-links a {
+  color: #333; /* A dark grey for better readability */
+  text-decoration: none;
+  margin: 0 25px;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #ff6f00; /* Use accent color on hover */
+}
+
+
+/* --- Auth/Actions Section (Right Side) --- */
+.auth-section-right {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Provides consistent spacing between all items */
+}
+
+/* Shared styles for all buttons and links in the auth section */
+.auth-section-right > a, 
+.auth-section-right > button {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Space between an icon and its text */
+  text-decoration: none;
+  border: 1px solid transparent; /* Prepare for borders on hover/focus */
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+}
+
+/* NEW: Styles for standalone icon buttons (Wishlist, Cart, Profile) */
+.icon-btn {
+    background: transparent;
+    padding: 8px; /* Give a slightly larger clickable area */
+    color: #333;
+    border-color: #ddd; /* Subtle border */
+}
+
+.icon-btn:hover {
+    color: #ff6f00;
+    background-color: #f9f9f9; /* Slight background change */
+    border-color: #ff6f00;
+}
+
+/* Login Button */
+.login-btn {
+  color: #333;
+  background: transparent;
+}
+
+.login-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Signup Button */
+.signup-btn {
+  background-color: #ff6f00; 
+  color: white;
+  border-color: #ff6f00;
+}
+
+.signup-btn:hover {
+  background-color: #e66500; /* A darker shade for hover */
+  border-color: #e66500;
+}
