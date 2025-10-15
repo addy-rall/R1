@@ -1,70 +1,77 @@
-import React from 'react';
-import "../App.css";
-import logo from "../assets/logo (1).svg";
+import React from "react";
+import { Link } from "react-router-dom";
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import "./Footer.css";
+import logo from "../assets/temple1.png";
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer className="site-footer">
-      <div className="footer-content">
-        <div className="footer-section company-info">
-            <img src={logo} alt="Logo" className="footer-logo-img" />
-          <span className="footer-logo"> Mannka</span>
-         
-          <p>Connecting souls with sacred spaces worldwide. Discover the beauty, history, and spirituality of temples across cultures and traditions.</p>
+    <footer className="footer">
+      <div className="footer-container">
+        
+        {/* Left Section */}
+        <div className="footer-section about">
+          <img src={logo} alt="Temple Explorer Logo" className="footer-logo-img" />
+
+          <p>
+            Discover sacred temples and spiritual experiences from around the world. 
+            Connect with ancient wisdom and find inner peace through authentic temple visits.
+          </p>
           <div className="social-icons">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-twitter"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-youtube"></i></a>
+            <a href="#"><Facebook size={28}/></a>
+            <a href="#"><Twitter size={28}/></a>
+            <a href="#"><Instagram size={28} /></a>
+            <a href="#"><Youtube size={28} /></a>
           </div>
-        </div>  
-        <div className="footer-section footer-links">
-          <h4>Explore</h4>
-          <ul>     
-            <li><a href="#">All Temples</a></li>
-            <li><a href="#">Hindu Temples</a></li>
-            <li><a href="#">Buddhist Temples</a></li>
-            <li><a href="#">Sikh Gurdwaras</a></li>
-            <li><a href="#">Top Destinations</a></li>
+        </div>
+
+        {/* Middle Section */}
+        <div className="footer-section links">
+          <h3>Explore</h3>
+          <ul>
+            <li><Link to="/">Temples</Link></li>
+            <li><Link to="/">About Us</Link></li>
+            <li><Link to="">Spiritual Experiences</Link></li>
+            <li><Link to="/">Contact Us</Link></li>
+            <li><Link to="/">Temple Festivals</Link></li>
           </ul>
         </div>
-        <div className="footer-section footer-links">
-          <h4>Services</h4>
+
+        {/* Resources Section */}
+        <div className="footer-section links">
+          <h3>Resources</h3>
           <ul>
-            <li><a href="#">Guided Tours</a></li>
-            <li><a href="#">Meditation Retreats</a></li>
-            <li><a href="#">Spiritual Workshops</a></li>
-            <li><a href="#">Cultural Experiences</a></li>
-            <li><a href="#">Book Your Visit</a></li>
+            <li><Link to="/">Spiritual Blog</Link></li>
+            <li><Link to="/">Travel Tips</Link></li>
+            <li><Link to="/">Cultural Guide</Link></li>
+            <li><Link to="/">Temple Photography</Link></li>
+            <li><Link to="/">FAQ</Link></li>
           </ul>
         </div>
-        <div className="footer-section footer-links">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Travel Tips</a></li>
-            <li><a href="#">Help Center</a></li>
-          </ul>
+
+        {/* Contact Section */}
+        <div className="footer-section contact">
+          <h3>Contact</h3>
+          <p><Mail className="icon" /> mannkaco@gmail.com</p>
+          <p><Phone className="icon" />+91 8858855308</p>
+          <p><MapPin className="icon" /> Varansi , India</p>
+          <div className="newsletter">
+            <input type="email" placeholder="Your email" />
+            <button>Subscribe</button>
+          </div>
         </div>
       </div>
+
       <div className="footer-bottom">
-        <div className="footer-cta">
-          <button className="cta-button">Spiritual Journey Awaits</button>
-          <span className="support-text">24/7 Support Available</span>
-        </div>
-        <div className="footer-legal">
-          <p>&copy; 2025 Mannka. All rights reserved.</p>
-          <div className="legal-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
-          </div>
+        <p>© 2025 Mannka. All rights reserved.</p>
+        <div className="footer-links">
+          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/terms">Terms of Service</Link>
+          <Link to="/cookies">Cookie Policy</Link>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;
