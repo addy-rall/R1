@@ -34,7 +34,7 @@ const items = [
   },
 ];
 
-const WhyChooseUs = () => {
+const Featuressection = () => {
   const [current, setCurrent] = useState(0);
 
   // Auto change every 8 seconds
