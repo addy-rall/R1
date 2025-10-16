@@ -1,125 +1,183 @@
-/* src/components/Header.css */
-
+/* ===== Base Header ===== */
 .header {
-  position: absolute; 
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 15px 50px;
+  z-index: 999;
+  background: #fff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 10; 
-  box-sizing: border-box; /* Ensures padding is included in the width */
-  border-bottom: 1px solid #eee; /* Optional: adds a subtle separator line */
+  justify-content: space-between;
+  padding: 12px 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
-/* --- Logo Section --- */
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);
+}
+
+/* ===== Logo ===== */
 .logo {
   display: flex;
   align-items: center;
-  font-weight: bold;
+  gap: 8px;
+}
+.logo-icon-asset {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
 }
 
-.logo-icon-asset { 
-    width: 40px; 
-    height: 40px;
-    margin-right: 10px;
+/* ===== Menu Toggle (Hamburger) ===== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  z-index: 1001;
 }
 
-.logo-text-stack {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1; 
+/* ===== Side Menu (Slide In) ===== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  height: 100vh;
+  width: 240px;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  gap: 20px;
+  align-items: center;
+  transition: right 0.35s ease;
+  z-index: 1000;
 }
 
-.logo-text {
-    font-size: 1.5em;
-    color: #ff6f00;
+.side-menu.open {
+  right: 0;
 }
 
-.logo-tagline {
-    color: #ff6f00; 
-    font-size: 0.8em;
-    font-weight: normal;
-}
-
-/* --- Navigation Links --- */
-.nav-links {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1; /* Allows nav to occupy the available space in the middle */
-}
-
-.nav-links a {
-  color: #333; /* A dark grey for better readability */
+.side-menu a {
+  color: #000;
   text-decoration: none;
-  margin: 0 25px;
-  font-size: 1.1em;
   font-weight: 500;
-  transition: color 0.2s ease-in-out;
+  font-size: 1.05rem;
+  transition: color 0.3s;
+}
+.side-menu a:hover,
+.side-menu a.active {
+  color: #ff6f00
 }
 
-.nav-links a:hover {
-  color: #ff6f00; /* Use accent color on hover */
-}
-
-
-/* --- Auth/Actions Section (Right Side) --- */
+/* ===== Auth Section ===== */
 .auth-section-right {
   display: flex;
   align-items: center;
-  gap: 12px; /* Provides consistent spacing between all items */
+  gap: 16px;
 }
 
-/* Shared styles for all buttons and links in the auth section */
-.auth-section-right > a, 
-.auth-section-right > button {
-  display: flex;
-  align-items: center;
-  gap: 6px; /* Space between an icon and its text */
-  text-decoration: none;
-  border: 1px solid transparent; /* Prepare for borders on hover/focus */
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1em;
-  transition: all 0.2s ease-in-out;
-}
-
-/* NEW: Styles for standalone icon buttons (Wishlist, Cart, Profile) */
 .icon-btn {
-    background: transparent;
-    padding: 8px; /* Give a slightly larger clickable area */
-    color: #333;
-    border-color: #ddd; /* Subtle border */
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .icon-btn:hover {
-    color: #ff6f00;
-    background-color: #f9f9f9; /* Slight background change */
-    border-color: #ff6f00;
+  color: #ff6f00;
 }
 
-/* Login Button */
-.login-btn {
-  color: #333;
-  background: transparent;
+/* ===== Profile ===== */
+.profile-container {
+  position: relative;
+  cursor: pointer;
 }
 
-.login-btn:hover {
-  background-color: #f0f0f0;
-}
-
-/* Signup Button */
-.signup-btn {
-  background-color: #ff6f00; 
+.user-avatar,
+.user-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e8dddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
   color: white;
-  border-color: #ff6f00;
+  background: #ff6f00;
 }
 
-.signup-btn:hover {
-  background-color: #e66500; /* A darker shade for hover */
-  border-color: #e66500;
+/* ===== Logout Dropdown ===== */
+.logout-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  z-index: 999;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+  color: #000;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #f6f6f6;
+  color: #e60023;
+}
+
+/* ===== Desktop Nav Hidden (we use side menu instead) ===== */
+.nav-links {
+  display: none;
+}
+
+/* ===== Mobile View ===== */
+@media (max-width: 950px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ===== Large Screen Adjustments ===== */
+@media (min-width: 951px) {
+  .side-menu {
+    position: static;
+    height: auto;
+    width: auto;
+    flex-direction: row;
+    background: none;
+    box-shadow: none;
+    padding-top: 0;
+    gap: 28px;
+  }
+
+  .side-menu a {
+    font-size: 1rem;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
 }
