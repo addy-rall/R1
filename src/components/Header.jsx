@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React, { useEffect, useState, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../components/Header.css";
@@ -15,7 +14,6 @@ const Header = () => {
   const menuRef = useRef();
   const profileRef = useRef();
 
-  // Track Firebase login state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -30,7 +28,6 @@ const Header = () => {
     navigate("/login");
   };
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector(".header");
@@ -41,7 +38,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -77,10 +73,6 @@ const Header = () => {
         <img src={ProfileIcon} alt="Logo" className="logo-icon-asset" />
       </div>
 
-      {/* ===== Hamburger (always visible in mobile view) ===== */}
-      
-
-      {/* ===== Side Menu ===== */}
       <button
         className="menu-toggle"
         onClick={() => setMenuOpen(!menuOpen)}
@@ -95,7 +87,6 @@ const Header = () => {
         <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
       </nav>
 
-      {/* ===== Right Side ===== */}
       <div className="auth-section-right">
         {user ? (
           <>

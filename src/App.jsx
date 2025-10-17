@@ -1,3 +1,5 @@
+// src/App.jsx
+
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -11,6 +13,8 @@ import Cart from "./pages/Cart.jsx";
 import Profile from "./pages/Profile.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+// *** IMPORT THE TEMPLE DETAIL WRAPPER ***
+import TempleDetailspageWrapper from "./pages/templewrapper.jsx";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -23,6 +27,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/temples" element={<Temples />} />
+          
+          {/* *** NEW DYNAMIC ROUTE FOR DETAIL PAGES *** */}
+          {/* This route catches URLs like /temple/ram-mandir or /temple/annapurna-temple */}
+          <Route path="/temple/:templeSlug" element={<TempleDetailspageWrapper />} />
+
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/wishlist" element={<Wishlist />} />
