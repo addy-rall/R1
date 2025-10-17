@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+// 1. IMPORT useNavigate
+import { useNavigate } from 'react-router-dom'; 
+
 import "../components/TempleCard.css";
 import ramMandirImg from "../assets/RamMandir.jpg";
 import kashiVishwanathImg from "../assets/KashiVishanath.jpg";
@@ -7,6 +10,7 @@ import kaalBhairavImg from "../assets/KaalBhairav.jpg";
 import bankeBihariImg from "../assets/BankeBihari.webp";
 import annapurnaImg from "../assets/annapurnaTemple.jpg";
 import { MapPin, Users, Clock, Heart } from "lucide-react";
+
 
 const temples = [
   {
@@ -18,6 +22,7 @@ const temples = [
     tags: ["Shiva", "Jyotirlinga", "Moksha"],
     visitors: "1.5M visitors/year",
     established: "Est.1780",
+    slug: "kashi-vishwanath-temple", // 3. ADDED slug
   },
   {
     name: "Annapurna Temple",
@@ -28,6 +33,7 @@ const temples = [
     tags: ["Grace", "Nourishment", "Prosperity"],
     visitors: "900K visitors/year",
     established: "Est.18th century",
+    slug: "annapurna-temple", // 3. ADDED slug
   },
   {
     name: "Durga Mata Mandir",
@@ -38,6 +44,7 @@ const temples = [
     tags: ["Strength", "Power", "Protection"],
     visitors: "700K visitors/year",
     established: "Est.18th century",
+    slug: "durga-mata-mandir", // 3. ADDED slug
   },
   {
     name: "Kaal Bhairav Temple",
@@ -48,6 +55,7 @@ const temples = [
     tags: ["Guardian", "Fearless", "Justice"],
     visitors: "2.2M visitors/year",
     established: "Est.17th century",
+    slug: "kaal-bhairav-temple", // 3. ADDED slug
   },
   {
     name: "Ram Mandir",
@@ -58,6 +66,7 @@ const temples = [
     tags: ["Faith", "Dharma", "Devotion"],
     visitors: "100K visitors/day",
     established: "Est. January 2024",
+    slug: "ram-mandir", // 3. ADDED slug
   },
   {
     name: "Banke Bihari Temple",
@@ -68,12 +77,16 @@ const temples = [
     tags: ["Love", "Joy", "Playfulness"],
     visitors: "5M visitors/year",
     established: "Est. 1864",
+    slug: "banke-bihari-temple", // 3. ADDED slug
   },
 ];
 
 export default function Temples() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [favorites, setFavorites] = useState([]);
+  
+  // 2. INITIALIZE THE navigate FUNCTION
+  const navigate = useNavigate();
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % temples.length);
   const previousSlide = () => setCurrentSlide((prev) => (prev - 1 + temples.length) % temples.length);
@@ -84,6 +97,12 @@ export default function Temples() {
         ? prev.filter((fav) => fav !== name)
         : [...prev, name]
     );
+  };
+  
+  // 4. DEFINE THE NAVIGATION HANDLER FUNCTION
+  const handleExploreClick = (slug) => {
+      // Navigates to the route defined in App.jsx: "/temple/:templeSlug"
+      navigate(`/temple/${slug}`);
   };
 
   useEffect(() => {
@@ -150,7 +169,13 @@ export default function Temples() {
                       <span>{temple.established}</span>
                     </div>
                   </div>
-                  <button className="explore-btn">Explore Temple</button>
+                  <button 
+                    className="explore-btn" 
+                    // 5. CALL THE HANDLER with the temple's slug
+                    onClick={() => handleExploreClick(temple.slug)}
+                  >
+                    Explore Temple
+                  </button>
                 </div>
               </div>
             );
@@ -158,7 +183,8 @@ export default function Temples() {
         </div>
 
         <div className="view-all-section">
-          <button className="view-all-btn">View All Temples</button>
+          <button className="view-all-btn"onClick={() => navigate('/temples')}
+          >View All Temples</button>
         </div>
       </div>
     </div>
