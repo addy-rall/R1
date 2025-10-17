@@ -1,10 +1,19 @@
 import React from 'react';
 // Imports the CSS file from the root directory as per your folder structure
 import '../TempleDetail.css'; 
-import './Temples.jsx'; // Ensure this path is correct based on your project structure
 import { FaMapMarkerAlt, FaClock, FaTshirt, FaTag, FaStar } from 'react-icons/fa'; 
-// This component receives the selected 'temple' object as a prop
-const TempleDetailPage = ({ temple }) => {
+// Removed unnecessary imports: Navigate, Link, and the faulty import of handleBookDarshan
+
+/**
+ * This component displays the detailed view of a single temple.
+ * * @param {object} props - Component props.
+ * @param {object} props.temple - The selected temple object containing all details.
+ * @param {function} props.onBookDarshanClick - Function to call when the booking button is pressed. 
+ * (This is the handleBookDarshan function passed from App.jsx)
+ */
+// RENAMED the prop to use the conventional name 'onBookDarshanClick' and use a clear destructuring name.
+const TempleDetailPage = ({ temple, onBookDarshanClick }) => {
+    
     // Fallback if the temple object is not successfully passed by the wrapper/router
     if (!temple) {
         return (
@@ -14,6 +23,7 @@ const TempleDetailPage = ({ temple }) => {
             </div>
         );
     }
+
     return (
         <div className="temple-detail-container">
             {/* Image Section */}
@@ -48,10 +58,16 @@ const TempleDetailPage = ({ temple }) => {
                         {temple.longDescription} 
                     </p> 
                     
-                    {/* Booking Link (Opens in a new tab) */}
-                    <a href={temple.bookingLink || "#"} className="detail-book-link" target="_blank" rel="noopener noreferrer">
+                    {/* --- MODIFIED CODE --- */}
+                    {/* Booking Button: Calls the prop function (onBookDarshanClick) */}
+                    <button 
+                        // The prop 'onBookDarshanClick' is used here.
+                        onClick={() => onBookDarshanClick(temple)} 
+                        className="detail-book-link book-button-style"
+                    >
                         Book Darshan Slot Now
-                    </a>
+                    </button>
+                    {/* --- MODIFIED CODE END --- */}
                 </div>
 
                 {/* Right Column: Key Details Sidebar */}
