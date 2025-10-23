@@ -8,27 +8,23 @@ import D from "../assets/KaalBhairav.jpg";
 import E from "../assets/KashiVishanath.jpg";
 import F from "../assets/RamMandir.jpg";
 import '../temp.css';
-import { Link } from 'react-router-dom'; // Ensure Link is imported
+import { Link } from 'react-router-dom';
 
-// Temple data (FIXED: detailsUrl is now a clean slug)
+// Temple data
 export const temples = [
   {
     id: 1,
     name: "Annapurna Temple",
     shortDescription: "Maa Annapurna's presence in Varanasi is a symbol of divine sustenance. It is believed that she fulfills the basic needs of her devotees by providing abundance and spiritual strength....",
-    // NOTE: Add longDescription here for the detail page content
     longDescription: "Dedicated to the Goddess of Food, the Annapurna Temple stands near the Kashi Vishwanath Temple. Legend holds that Lord Shiva himself once begged for alms from Maa Annapurna. Worshippers believe that those who pray here will never go hungry.",
     location: "Varanasi, Uttar Pradesh",
     rating: 4,
     ratingCount: 6,
     imageUrl: A,
-    details: {
-      timing: "5:00 AM - 12:00 PM, 4:00 PM - 11:00 PM",
-      dressCode: "Traditional Indian attire is preferred.",
-    },
+    details: { timing: "5:00 AM - 12:00 PM, 4:00 PM - 11:00 PM", dressCode: "Traditional Indian attire is preferred." },
     tags: ["Ancient Temple", "Divine Sustenance", "Varanasi Heritage"],
     bookingLink: "/book-annapurna",
-    detailsUrl: "annapurna-temple", // FIXED
+    detailsUrl: "annapurna-temple",
   },
   {
     id: 2,
@@ -39,13 +35,10 @@ export const temples = [
     rating: 4.7,
     ratingCount: 22175,
     imageUrl: B,
-    details: {
-      timing: "7:45 AM - 12:00 PM, 5:30 PM - 9:30 PM (Varies seasonally)",
-      dressCode: "Modest clothing is recommended.",
-    },
+    details: { timing: "7:45 AM - 12:00 PM, 5:30 PM - 9:30 PM (Varies seasonally)", dressCode: "Modest clothing is recommended." },
     tags: ["Lord Krishna", "Vrindavan Pilgrimage", "Spiritual Bliss", "Bihari Ji"],
     bookingLink: "/book-bankebihari",
-    detailsUrl: "banke-bihari-temple", // FIXED
+    detailsUrl: "banke-bihari-temple",
   },
   {
     id: 3,
@@ -56,13 +49,10 @@ export const temples = [
     rating: 4.6,
     ratingCount: 56,
     imageUrl: C,
-    details: {
-      timing: "5:00 AM - 10:00 PM",
-      dressCode: "No specific restrictions, but modest wear is appreciated.",
-    },
+    details: { timing: "5:00 AM - 10:00 PM", dressCode: "No specific restrictions, but modest wear is appreciated." },
     tags: ["Goddess Durga", "Ancient Site", "Varanasi Landmark"],
     bookingLink: "/book-durga",
-    detailsUrl: "durga-mata-mandir", // FIXED
+    detailsUrl: "durga-mata-mandir",
   },
   {
     id: 4,
@@ -73,13 +63,10 @@ export const temples = [
     rating: 4.7,
     ratingCount: 515,
     imageUrl: D,
-    details: {
-      timing: "5:00 AM - 1:30 PM, 4:30 PM - 9:30 PM (Varies seasonally)",
-      dressCode: "Leather items are often restricted; modest dress is required.",
-    },
+    details: { timing: "5:00 AM - 1:30 PM, 4:30 PM - 9:30 PM (Varies seasonally)", dressCode: "Leather items are often restricted; modest dress is required." },
     tags: ["Lord Shiva", "Kotwal of Kashi", "Ancient", "Tantric", "Fierce Form"],
     bookingLink: "/book-kaalbhairav",
-    detailsUrl: "kaal-bhairav-temple", // FIXED
+    detailsUrl: "kaal-bhairav-temple",
   },
   {
     id: 5,
@@ -90,13 +77,10 @@ export const temples = [
     rating: 4.7,
     ratingCount: 515,
     imageUrl: E,
-    details: {
-      timing: "2:30 AM to 11:00 PM (subject to Aarti timings)",
-      dressCode: "Strictly modest; western clothing (jeans/trousers) may be restricted inside the Garbhagriha.",
-    },
+    details: { timing: "2:30 AM to 11:00 PM (subject to Aarti timings)", dressCode: "Strictly modest; western clothing (jeans/trousers) may be restricted inside the Garbhagriha." },
     tags: ["Jyotirlinga", "Lord Shiva", "Golden Temple", "Ganga Corridor", "Moksha"],
     bookingLink: "/book-kashivishwanath",
-    detailsUrl: "kashi-vishwanath-temple", // FIXED
+    detailsUrl: "kashi-vishwanath-temple",
   },
   {
     id: 6,
@@ -107,182 +91,170 @@ export const temples = [
     rating: 4.9,
     ratingCount: 1500000,
     imageUrl: F,
-    details: {
-      timing: "7:00 AM - 11:30 AM, 2:00 PM - 7:00 PM (Aarti slots require passes)",
-      dressCode: "Modest and respectful attire is strongly recommended.",
-    },
+    details: { timing: "7:00 AM - 11:30 AM, 2:00 PM - 7:00 PM (Aarti slots require passes)", dressCode: "Modest and respectful attire is strongly recommended." },
     tags: ["Ram Janmabhoomi", "Nagara Style", "Lord Rama", "Modern Architecture", "Pilgrimage"],
     bookingLink: "/book-rammandir",
-    detailsUrl: "ram-mandir", // FIXED
+    detailsUrl: "ram-mandir",
   },
 ];
 
 const TemplesPage = () => {
-    // 1. STATE INITIALIZATION
-    const [searchTerm, setSearchTerm] = useState('');
-    const [showModal, setShowModal] = useState(false);
-    const [selectedTemple, setSelectedTemple] = useState(null);
-    const [formData, setFormData] = useState({
-        firstName: "", lastName: "", email: "", phone: "",
-        date: "", time: "", people: "", requirements: "", terms: false
-    });
-    const [successMessage, setSuccessMessage] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedTemple, setSelectedTemple] = useState(null);
+  const [formData, setFormData] = useState({
+    firstName: "", lastName: "", email: "", phone: "",
+    date: "", time: "", people: "", requirements: "", terms: false
+  });
+  const [successMessage, setSuccessMessage] = useState("");
 
-    // 2. SEARCH FILTER DEFINITION (MUST BE DEFINED BEFORE JSX USES IT)
-    const filteredTemples = temples.filter(temple =>
-        temple.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  const filteredTemples = temples.filter(temple =>
+    temple.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-    // 3. HANDLER FUNCTIONS (Defined here, above return)
-    const handleBookDarshan = (temple) => {
-        setSelectedTemple(temple);
-        setShowModal(true);
-    };
-    const closeModal = () => {
-        setShowModal(false);
-        setSelectedTemple(null);
-        setSuccessMessage("");
-    };
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
-    };
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const bookingData = { temple: selectedTemple.name, ...formData };
+  const handleBookDarshan = (temple) => {
+    setSelectedTemple(temple);
+    setShowModal(true);
+  };
 
-        try {
-            // Mocking fetch success/failure
-            const response = { ok: Math.random() > 0.3 };
-            if (response.ok) {
-                setSuccessMessage("✅ Your darshan booking has been submitted successfully!");
-                setFormData({
-                    firstName: "", lastName: "", email: "", phone: "",
-                    date: "", time: "", people: "", requirements: "", terms: false
-                });
-            } else {
-                setSuccessMessage("❌ Failed to submit booking. Please try again.");
-            }
-        } catch (error) {
-            setSuccessMessage("⚠️ Server error. Please try later.");
-        }
-    };
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedTemple(null);
+    setSuccessMessage("");
+  };
 
-    // 4. JSX RETURN
-    return (
-        <div className="temple-listing-container">
-            <h1 className="main-heading">Sacred Temples of Uttar Pradesh</h1>
-            <h2 className="sub">Discover the divine heritage of Uttar Pradesh through its magnificent temples. Book your darshan online and experience spiritual bliss.</h2>
-            {/* Search Bar Section */}
-            <div className="search-bar-section">
-                <div className="search-input-wrapper">
-                    <svg
-                        className="search-icon"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                    >
-                        <path d="M21.71 20.29l-4.13-4.13A8.995 8.995 0 0018 10a9 9 0 10-9 9 8.995 8.995 0 005.16-1.57l4.13 4.13a1 1 0 001.42 0 1 1 0 000-1.42zM4 10a6 6 0 1112 0 6 6 0 01-12 0z" />
-                    </svg>
-                    <input
-                        type="text"
-                        placeholder="Search for temple"
-                        value={searchTerm}
-                        onChange={e => setSearchTerm(e.target.value)}
-                        className="search-input"
-                    />
-                </div>
-            </div>
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+  };
 
-            <div className="temple-grid">
-                {/* Now safely using filteredTemples */}
-                {filteredTemples.map(temple => (
-                    <div key={temple.id} className="temple-card">
-                        <img src={temple.imageUrl} alt={temple.name} className="temple-image" />
-                        <div className="temple-info">
-                            <h3 className="temple-title">{temple.name}</h3>
-                            <p className="temple-location">{temple.location}</p>
-                            <p className="temple-short">{temple.shortDescription}</p>
-                            <div className="temple-tags">
-                                {temple.tags.map(tag => (
-                                    <span key={tag} className="temple-tag">{tag}</span>
-                                ))}
-                            </div>
-                            <div className="temple-actions">
-                                <button
-                                    className="book-btn"
-                                    onClick={() => handleBookDarshan(temple)}
-                                >
-                                    Book Darshan
-                                </button>
-                                {/* CORRECT LINK TO MATCH /temple/:templeSlug ROUTE */}
-                                <Link 
-                                    to={`/temple/${temple.detailsUrl}`} 
-                                    className="read-more-btn"
-                                >
-                                    Read More
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const bookingData = { temple: selectedTemple.name, ...formData, people: Number(formData.people) };
 
-            {showModal && selectedTemple && (
-                <div className="fixed inset-0 bg-white/30 backdrop-blur-md bg-opacity-40 flex justify-center items-center z-50 width-full">
-                    <div className="bg-white w-full max-w-lg rounded-lg shadow-lg p-6 relative">
-                        <button onClick={closeModal} className="absolute top-3 right-3 text-gray-500 hover:text-black">✖</button>
-                        <h2 className="text-2xl font-bold text-orange-600 mb-2">Book Darshan</h2>
-                        <p className="text-gray-600 mb-4">{selectedTemple.name}, {selectedTemple.location}</p>
+    try {
+      const response = await fetch("http://localhost:5000/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookingData),
+      });
 
-                        {successMessage ? (
-                            <div className="p-4 bg-green-60 text-green-700 rounded">{successMessage}</div>
-                        ) : (
-                            <form className="space-y-4" onSubmit={handleSubmit}>
-                                {/* ... (Form fields) ... */}
-                                <div className="flex gap-4">
-                                    <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className="w-1/2 border p-2 rounded" required />
-                                    <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className="w-1/2 border p-2 rounded" required />
-                                </div>
-                                <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="w-full border p-2 rounded" required />
-                                <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} className="w-full border p-2 rounded" required />
+      const data = await response.json();
 
-                                <div className="flex gap-4">
-                                    <input type="date" name="date" value={formData.date} onChange={handleChange} className="w-1/2 border p-2 rounded" required />
-                                    <select name="time" value={formData.time} onChange={handleChange} className="w-1/2 border p-2 rounded" required>
-                                        <option value="">Select Time</option>
-                                        <option>Morning</option>
-                                        <option>Afternoon</option>
-                                        <option>Evening</option>
-                                    </select>
-                                </div>
+      if (response.ok) {
+        setSuccessMessage("✅ Your darshan booking has been submitted successfully!");
+        setFormData({
+          firstName: "", lastName: "", email: "", phone: "",
+          date: "", time: "", people: "", requirements: "", terms: false
+        });
+      } else {
+        setSuccessMessage(`❌ Failed to submit booking: ${data.error || "Please try again"}`);
+      }
+    } catch (error) {
+      console.error("Booking Error:", error);
+      setSuccessMessage("⚠️ Server error. Please try later.");
+    }
+  };
 
-                                <select name="people" value={formData.people} onChange={handleChange} className="w-full border p-2 rounded" required>
-                                    <option value="">Number of People</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4+</option>
-                                </select>
+  return (
+    <div className="temple-listing-container">
+      <h1 className="main-heading">Sacred Temples of Uttar Pradesh</h1>
+      <h2 className="sub">Discover the divine heritage of Uttar Pradesh through its magnificent temples. Book your darshan online and experience spiritual bliss.</h2>
 
-                                <textarea name="requirements" placeholder="Special Requirements" value={formData.requirements} onChange={handleChange} className="w-full border p-2 rounded" rows="3"></textarea>
-                                
-                                <div className="flex items-center">
-                                    <input type="checkbox" name="terms" checked={formData.terms} onChange={handleChange} className="mr-2" required />
-                                    <p className="text-sm text-gray-600">I agree to the terms and conditions.</p>
-                                </div>
-
-                                <div className="flex justify-end gap-4">
-                                    <button type="button" onClick={closeModal} className="px-4 py-2 border rounded">Cancel</button>
-                                    <button type="submit" className="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700">Book Darshan</button>
-                                </div>
-                            </form>
-                        )}
-                    </div>
-                </div>
-            )}
+      <div className="search-bar-section">
+        <div className="search-input-wrapper">
+          <svg
+            className="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M21.71 20.29l-4.13-4.13A8.995 8.995 0 0018 10a9 9 0 10-9 9 8.995 8.995 0 005.16-1.57l4.13 4.13a1 1 0 001.42 0 1 1 0 000-1.42zM4 10a6 6 0 1112 0 6 6 0 01-12 0z" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search for temple"
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
         </div>
-    );
+      </div>
+
+      <div className="temple-grid">
+        {filteredTemples.map(temple => (
+          <div key={temple.id} className="temple-card">
+            <img src={temple.imageUrl} alt={temple.name} className="temple-image" />
+            <div className="temple-info">
+              <h3 className="temple-title">{temple.name}</h3>
+              <p className="temple-location">{temple.location}</p>
+              <p className="temple-short">{temple.shortDescription}</p>
+              <div className="temple-tags">
+                {temple.tags.map(tag => <span key={tag} className="temple-tag">{tag}</span>)}
+              </div>
+              <div className="temple-actions">
+                <button className="book-btn" onClick={() => handleBookDarshan(temple)}>Book Darshan</button>
+                <Link to={`/temple/${temple.detailsUrl}`} className="read-more-btn">Read More</Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {showModal && selectedTemple && (
+        <div className="fixed inset-0 bg-white/30 backdrop-blur-md bg-opacity-40 flex justify-center items-center z-50 width-full">
+          <div className="bg-white w-full max-w-lg rounded-lg shadow-lg p-6 relative">
+            <button onClick={closeModal} className="absolute top-3 right-3 text-gray-500 hover:text-black">✖</button>
+            <h2 className="text-2xl font-bold text-orange-600 mb-2">Book Darshan</h2>
+            <p className="text-gray-600 mb-4">{selectedTemple.name}, {selectedTemple.location}</p>
+
+            {successMessage ? (
+              <div className="p-4 bg-green-100 text-green-700 rounded mb-4">{successMessage}</div>
+            ) : (
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="flex gap-4">
+                  <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className="w-1/2 border p-2 rounded" required />
+                  <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className="w-1/2 border p-2 rounded" required />
+                </div>
+                <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} className="w-full border p-2 rounded" required />
+
+                <div className="flex gap-4">
+                  <input type="date" name="date" value={formData.date} onChange={handleChange} className="w-1/2 border p-2 rounded" required />
+                  <select name="time" value={formData.time} onChange={handleChange} className="w-1/2 border p-2 rounded" required>
+                    <option value="">Select Time</option>
+                    <option>Morning</option>
+                    <option>Afternoon</option>
+                    <option>Evening</option>
+                  </select>
+                </div>
+
+                <select name="people" value={formData.people} onChange={handleChange} className="w-full border p-2 rounded" required>
+                  <option value="">Number of People</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4+</option>
+                </select>
+
+                <textarea name="requirements" placeholder="Special Requirements" value={formData.requirements} onChange={handleChange} className="w-full border p-2 rounded" rows="3"></textarea>
+                
+                <div className="flex items-center">
+                  <input type="checkbox" name="terms" checked={formData.terms} onChange={handleChange} className="mr-2" required />
+                  <p className="text-sm text-gray-600">I agree to the terms and conditions.</p>
+                </div>
+
+                <div className="flex justify-end gap-4">
+                  <button type="button" onClick={closeModal} className="px-4 py-2 border rounded">Cancel</button>
+                  <button type="submit" className="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700">Book Darshan</button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default TemplesPage;
