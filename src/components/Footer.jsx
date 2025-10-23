@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="social-icons">
             <a href="#"><Facebook size={28}/></a>
             <a href="#"><Twitter size={28}/></a>
-            <a href="#"><Instagram size={28} /></a>
+            <a href="https://www.instagram.com/mannka.com_/"><Instagram size={28} /></a>
             <a href="#"><Youtube size={28} /></a>
           </div>
         </div>

@@ -1,6 +1,4 @@
-// src/pages/Temples.jsx
-
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import A from "../assets/annapurnaTemple.jpg";
 import B from "../assets/BankeBihari.webp";
 import C from "../assets/Durga Mata mandir.jpg";

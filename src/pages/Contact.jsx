@@ -9,7 +9,7 @@ const Contact = () => {
     e.preventDefault();
     setError('');
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("https://your-backend-api.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -117,15 +117,15 @@ const Contact = () => {
                 <span className="text-2xl mr-4">📧</span>
                 <div>
                   <p className="font-medium text-gray-700">Email</p>
-                  <p className="text-gray-600">info@templedirectory.com</p>
-                  <p className="text-gray-600">support@templedirectory.com</p>
+                  <p className="text-gray-600">mannkaco@gmail.com</p>
+                  <p className="text-gray-600">mannka915@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <span className="text-2xl mr-4">📞</span>
                 <div>
                   <p className="font-medium text-gray-700">Phone</p>
-                  <p className="text-gray-600">+91 123-456-7890</p>
+                  <p className="text-gray-600">+91 8858855308</p>
                   <p className="text-gray-600">+91 987-654-3210</p>
                 </div>
               </div>
