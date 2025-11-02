@@ -9,7 +9,7 @@ const Contact = () => {
     e.preventDefault();
     setError('');
     try {
-      const response = await fetch("https://your-backend-api.onrender.com", {
+      const response = await fetch("https://mannkabackend.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
